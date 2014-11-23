@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Simple SQLite</string>
+    <string name="action_settings">Settings</string>
+    <string name="instructions">Fill the information below</string>
+    
+    <string name="dni">DNI</string>
+    <string name="name">Name and Lastname</string>
+    <string name="university">University</string>
+    <string name="class_registered">Class</string>
+
+    <string name="button_add">Add</string>
+    <string name="button_delete">Delete</string>
+    <string name="button_update">Update</string>
+    <string name="button_show">Show</string>
+
+</resources>
