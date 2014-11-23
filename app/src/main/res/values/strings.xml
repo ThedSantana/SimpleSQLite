@@ -15,4 +15,16 @@
     <string name="button_update">Update</string>
     <string name="button_show">Show</string>
 
+    <string name="dni_required">Field DNI is required</string>
+    <string name="name_required">Field name is required</string>
+    <string name="university_required">Field university is required</string>
+    <string name="subject_required">Field subject is required</string>
+
+    <string name="data_created">The data was created</string>
+    <string name="data_not_exists">There are not data with DNI</string>
+    <string name="data_updated">The data was updated</string>
+    <string name="data_not_updated">Could not update data</string>
+    <string name="data_deleted">The data as deleted</string>
+    <string name="data_not_deleted">Could not delete data</string>
+
 </resources>

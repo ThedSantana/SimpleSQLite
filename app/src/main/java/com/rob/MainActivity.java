@@ -2,6 +2,7 @@ package com.rob;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -62,25 +63,26 @@ public class MainActivity extends Activity {
         String nameString       = name.getText().toString();
         String universityString = university.getText().toString();
         String subjectString    = subject.getText().toString();
+        Resources resource      = getResources();
 
         if(dniString.equals("")){
             validFields = false;
-            dni.setError("The DNI is required");
+            dni.setError(resource.getString(R.string.dni_required));
         }
 
         if(nameString.equals("")){
             validFields = false;
-            name.setError("The Name is required");
+            name.setError(resource.getString(R.string.name_required));
         }
 
         if(universityString.equals("")){
             validFields = false;
-            university.setError("University is required");
+            university.setError(resource.getString(R.string.university_required));
         }
 
         if(subjectString.equals("")){
             validFields = false;
-            subject.setError("Subject is required");
+            subject.setError(resource.getString(R.string.subject_required));
         }
 
         if(validFields == true){
@@ -96,7 +98,7 @@ public class MainActivity extends Activity {
             db.insert("people", null, registry);
             db.close();
 
-            Toast.makeText(this, "The data was inserted", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, resource.getString(R.string.data_created), Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -104,6 +106,7 @@ public class MainActivity extends Activity {
 
     public void deleteAction(View view){
         String dniString = dni.getText().toString();
+        Resources resource = getResources();
 
         AdminSQLiteOpenHelper sqlite = new AdminSQLiteOpenHelper(this, "management", null, 1);
         SQLiteDatabase db = sqlite.getWritableDatabase();
@@ -117,9 +120,9 @@ public class MainActivity extends Activity {
         subject.setText("");
 
         if(quantity == 1){
-            Toast.makeText(this, "The data was deleted", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, resource.getString(R.string.data_deleted), Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "There is not person with that dni", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, resource.getString(R.string.data_not_deleted), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -129,6 +132,7 @@ public class MainActivity extends Activity {
         String nameString       = name.getText().toString();
         String universityString = university.getText().toString();
         String subjectString    = subject.getText().toString();
+        Resources resource      = getResources();
 
         AdminSQLiteOpenHelper sqlite = new AdminSQLiteOpenHelper(this, "management", null, 1);
         SQLiteDatabase db = sqlite.getWritableDatabase();
@@ -143,15 +147,16 @@ public class MainActivity extends Activity {
         db.close();
 
         if(quantity == 1){
-            Toast.makeText(this, "The registry was updated", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, resource.getString(R.string.data_updated), Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "There are no registries to update", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, resource.getString(R.string.data_not_updated), Toast.LENGTH_SHORT).show();
         }
     }
 
 
     public void showAction(View view){
         String dniString = dni.getText().toString();
+        Resources resource = getResources();
 
         AdminSQLiteOpenHelper sqlite = new AdminSQLiteOpenHelper(this, "management", null, 1);
         SQLiteDatabase db = sqlite.getWritableDatabase();
@@ -163,7 +168,7 @@ public class MainActivity extends Activity {
             university.setText(row.getString(1));
             subject.setText(row.getString(2));
         } else {
-            Toast.makeText(this, "People does not exist in DB", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, resource.getString(R.string.data_not_exists), Toast.LENGTH_SHORT).show();
         }
 
         db.close();
